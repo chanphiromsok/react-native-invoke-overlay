@@ -1,18 +1,22 @@
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-draw-overlay';
+import { StyleSheet, Text, View } from 'react-native';
+import { canDrawOverlays, openOverlaySetting } from 'react-native-draw-overlay';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
+  const [state, setState] = React.useState({});
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    canDrawOverlays().then((res) => {
+      console.log('canDrawOverlays', res);
+      setState(res);
+      if (res.inBackground === 'denied' || res.inLocked === 'denied') {
+        openOverlaySetting();
+      }
+    });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {JSON.stringify(state, null, 2)}</Text>
     </View>
   );
 }

@@ -130,20 +130,19 @@ public class DrawOverlayModule extends ReactContextBaseJavaModule {
       final ReactApplicationContext reactContext = getReactApplicationContext();
       final WritableMap data = Arguments.createMap();
       boolean isXiaomi = XiaomiUtils.isMIUI();
+      boolean canDraw = Settings.canDrawOverlays(reactContext);
+      String status = canDraw ? "granted" : "denied";
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         if (isXiaomi) {
           boolean inBackground = XiaomiUtils.checkXiaomiPermission(reactContext, XiaomiUtils.OP_BACKGROUND_START_ACTIVITY);
           boolean inLocked = XiaomiUtils.checkXiaomiPermission(reactContext, XiaomiUtils.OP_SHOW_WHEN_LOCKED);
           data.putString("inBackground", inBackground ? "granted" : "denied");
           data.putString("inLocked", inLocked ? "granted" : "denied");
-        }
-        boolean canDraw = Settings.canDrawOverlays(reactContext);
-        data.putString("canDrawOverlays", canDraw ? "granted" : "denied");
-        if (!isXiaomi || canDraw) {
-          String status = canDraw ? "granted" : "denied";
+        }else{
           data.putString("inBackground", status);
           data.putString("inLocked", status);
         }
+        data.putString("canDrawOverlays", status);
       } else {
         promise.reject(new Throwable("your device is not support this feature"));
       }

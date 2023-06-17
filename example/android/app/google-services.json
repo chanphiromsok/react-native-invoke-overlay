@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "816873201651",
+    "project_id": "hey24-17409",
+    "storage_bucket": "hey24-17409.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816873201651:android:26874c4ea41de602db7c86",
+        "android_client_info": {
+          "package_name": "com.drawoverlayexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816873201651-s6776269iins1err0k386ha2648usfjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDLZXyZif1c-dK_SEAiCWadZLUzVR13RA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816873201651-s6776269iins1err0k386ha2648usfjs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "816873201651-5hpairagk50rqalrj3o8lis0n0btkmpo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "rom.romsloy.Hey24"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

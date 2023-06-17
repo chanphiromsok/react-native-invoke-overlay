@@ -18,6 +18,7 @@ const DrawOverlay: DrawOverlays = NativeModules.DrawOverlay
     );
 
 type Async<T = boolean> = () => Promise<T>;
+type InvokeFunction<T = object> = (data: T) => void;
 type DrawOverlays = {
   canDrawOverlays: Async<CanDrawOverlayType>;
   openOverlaySetting: () => void;
@@ -26,7 +27,7 @@ type DrawOverlays = {
   // if return false is already registered
   registerKeepAwakeScreen: Async;
   // return true if screen on
-  invokeApp: Async;
+  invokeApp: InvokeFunction;
 };
 
 export const canDrawOverlays: () => Promise<CanDrawOverlayType> =
@@ -36,5 +37,10 @@ export const removeKeepAwakeScreenOn: () => void =
   DrawOverlay.removeKeepAwakeScreenOn;
 export const registerKeepAwakeScreen: () => void =
   DrawOverlay.registerKeepAwakeScreen;
-export const invokeApp: () => void = DrawOverlay.invokeApp;
+export const invokeApp: InvokeFunction = (data) =>
+  DrawOverlay.invokeApp({
+    data: {
+      data,
+    },
+  });
 export { DrawOverlay };

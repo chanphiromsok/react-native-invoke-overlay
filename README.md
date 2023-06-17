@@ -33,6 +33,11 @@ import { DrawOverlay,
 You can check run clone repository and test from your own,
 I used firebase push message from background you can create project from firebase then download `google-services.json` after downloaded go to `example/android/app` and update it then test push.
 
+## Video
+
+https://github.com/chanphiromsok/react-native-draw-overlay/assets/65760336/e65fa0dc-6868-48f8-b645-37961a33071f
+
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.

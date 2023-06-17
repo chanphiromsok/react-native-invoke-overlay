@@ -1,13 +1,12 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules } from 'react-native';
 import type { CanDrawOverlayType } from '../types/DrawOverlayType';
 
 const LINKING_ERROR =
   `The package 'react-native-draw-overlay' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const DrawOverlay = NativeModules.DrawOverlay
+const DrawOverlay: DrawOverlays = NativeModules.DrawOverlay
   ? NativeModules.DrawOverlay
   : new Proxy(
       {},
@@ -18,29 +17,24 @@ const DrawOverlay = NativeModules.DrawOverlay
       }
     );
 
-/**
- * Support Only android
- * canDrawOverlays is async/await function
- * use to check if the app can draw overlays
- * ```ts
- * const results = await canDrawOverlays();
- * console.log(results);
- * // {
- * //   canDrawOverlays: "granted", whether your app can draw overlays
- * //   inBackground: "granted", when your app is in background
- * //   inLocked: "granted", when your phone is locked screen
- * // }
- * ```
- * @returns {Promise<CanDrawOverlayType>}
- */
-export const canDrawOverlays = async (): Promise<CanDrawOverlayType> => {
-  return await DrawOverlay.canDrawOverlays();
+type Async<T = boolean> = () => Promise<T>;
+type DrawOverlays = {
+  canDrawOverlays: Async<CanDrawOverlayType>;
+  openOverlaySetting: () => void;
+  // if return false is already registered
+  removeKeepAwakeScreenOn: Async;
+  // if return false is already registered
+  registerKeepAwakeScreen: Async;
+  // return true if screen on
+  invokeApp: Async;
 };
 
-/**
- * @example
- * openOverlaySetting is function use to open overlay permission in setting
- * @returns {void}
- */
+export const canDrawOverlays: () => Promise<CanDrawOverlayType> =
+  DrawOverlay.canDrawOverlays;
 export const openOverlaySetting: () => void = DrawOverlay.openOverlaySetting;
+export const removeKeepAwakeScreenOn: () => void =
+  DrawOverlay.removeKeepAwakeScreenOn;
+export const registerKeepAwakeScreen: () => void =
+  DrawOverlay.registerKeepAwakeScreen;
+export const invokeApp: () => void = DrawOverlay.invokeApp;
 export { DrawOverlay };

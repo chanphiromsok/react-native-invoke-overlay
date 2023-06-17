@@ -1,16 +1,29 @@
+import messaging from '@react-native-firebase/messaging';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { canDrawOverlays, openOverlaySetting } from 'react-native-draw-overlay';
+import { DeviceEventEmitter, StyleSheet, Text, View } from 'react-native';
+import { notificationListener, requestUserPermission } from './notifcation';
+import { useDrawerOverlay } from './useDrawOverlay';
+import { DrawOverlay } from 'react-native-draw-overlay';
 
+const isOnline = true;
 export default function App() {
-  const [state, setState] = React.useState({});
+  const state = useDrawerOverlay({ unlessGranted: true });
   React.useEffect(() => {
-    canDrawOverlays().then((res) => {
-      console.log('canDrawOverlays', res);
-      setState(res);
-      if (res.inBackground === 'denied' || res.inLocked === 'denied') {
-        openOverlaySetting();
-      }
+    messaging()
+      .getToken()
+      .then((token) => {
+        console.log('FIRE_BASE_TOKEN', token);
+      });
+    if (isOnline) {
+      DrawOverlay.registerKeepAwakeScreen();
+    } else {
+      DrawOverlay.removeKeepAwakeScreenOn();
+    }
+
+    requestUserPermission();
+    notificationListener();
+    DeviceEventEmitter.addListener('data', (data) => {
+      console.log('DeviceEventEmitter', data);
     });
   }, []);
 

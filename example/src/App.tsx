@@ -3,7 +3,7 @@ import * as React from 'react';
 import { DeviceEventEmitter, StyleSheet, Text, View } from 'react-native';
 import { notificationListener, requestUserPermission } from './notifcation';
 import { useDrawerOverlay } from './useDrawOverlay';
-import { DrawOverlay } from 'react-native-draw-overlay';
+import { DrawOverlay } from 'react-native-invoke-overlay';
 
 const isOnline = true;
 export default function App() {

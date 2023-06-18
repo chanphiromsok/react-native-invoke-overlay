@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-draw-overlay": ["./src/index"]
+      "react-native-invoke-overlay": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

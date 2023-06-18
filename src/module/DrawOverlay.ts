@@ -2,7 +2,7 @@ import { NativeModules } from 'react-native';
 import type { CanDrawOverlayType } from '../types/DrawOverlayType';
 
 const LINKING_ERROR =
-  `The package 'react-native-draw-overlay' doesn't seem to be linked. Make sure: \n\n` +
+  `The package 'react-native-invoke-overlay' doesn't seem to be linked. Make sure: \n\n` +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 

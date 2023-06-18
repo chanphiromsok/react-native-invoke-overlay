@@ -1,11 +1,11 @@
-# react-native-draw-overlay
+# react-native-invoke-overlay
 
 This package for invoke app while in lock screen app ,quite state,background and app killed (Android only)
 
 ## Installation
 
 ```sh
-npm install react-native-draw-overlay
+npm install react-native-invoke-overlay
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ import { DrawOverlay,
         openOverlaySetting,
         removeKeepAwakeScreenOn,
         registerKeepAwakeScreen ,
-        invokeApp} from 'react-native-draw-overlay';
+        invokeApp} from 'react-native-invoke-overlay';
 ```
 
 ## Definition

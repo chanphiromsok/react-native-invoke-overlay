@@ -1,6 +1,6 @@
 import messaging from '@react-native-firebase/messaging';
 import { AppRegistry } from 'react-native';
-import { invokeApp } from 'react-native-draw-overlay';
+import { invokeApp } from 'react-native-invoke-overlay';
 import { name as appName } from './app.json';
 import App from './src/App';
 

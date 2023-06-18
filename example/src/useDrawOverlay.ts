@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import type { CanDrawOverlayType } from 'react-native-draw-overlay';
-import { canDrawOverlays, openOverlaySetting } from 'react-native-draw-overlay';
+import type { CanDrawOverlayType } from 'react-native-invoke-overlay';
+import {
+  canDrawOverlays,
+  openOverlaySetting,
+} from 'react-native-invoke-overlay';
 import useAppState from './useAppState';
 
 type State = {

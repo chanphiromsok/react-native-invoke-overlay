@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.Log;
@@ -212,6 +213,13 @@ public class DrawOverlayModule extends ReactContextBaseJavaModule {
       reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("data", Arguments.fromBundle(bundle));
       bundle = null;
     }
+  }
+
+  private void setTimeout(){
+    Handler handler = new Handler();
+    handler.post(() -> {
+
+    })
   }
 
 }

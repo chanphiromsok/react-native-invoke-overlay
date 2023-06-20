@@ -1,0 +1,12 @@
+android/.gradle
+android/.idea
+android/build
+android/local.properties
+
+
+
+node_modules
+example
+ios/*
+react-native-draw-overlay.podspec
+yarn.lock

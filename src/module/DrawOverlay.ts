@@ -18,7 +18,8 @@ const DrawOverlay: DrawOverlays = NativeModules.DrawOverlay
     );
 
 type Async<T = boolean> = () => Promise<T>;
-type InvokeFunction<T = object> = (data: T) => void;
+type InvokeFunction<T = object> = (data: T) => Promise<boolean>;
+
 type DrawOverlays = {
   canDrawOverlays: Async<CanDrawOverlayType>;
   openOverlaySetting: () => void;
